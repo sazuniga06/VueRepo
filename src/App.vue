@@ -1,9 +1,11 @@
 <template>
-<PostList />
+  <ComputedVueEx  />
 </template>
 
 <script lang="ts" setup>
-import PostList from './components/PostList.vue';
+import ComputedVueEx from './components/ComputedVueEx.vue';
+
+
 </script>
 
 <style scoped>

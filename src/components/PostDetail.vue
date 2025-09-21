@@ -1,37 +1,30 @@
 <template>
 <div class="post-detail">
-    <h1>{{ title }}</h1>
-    <p>{{ content }}</p>
+    <h1>{{ props.title }}</h1>
+    <p>{{ props.content }}</p>
     <input type="text" v-model="message" />
     <button @click="handleClick">Hola</button>
 </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, Ref , ref} from 'vue';
+<script lang="ts" setup>
+import { defineProps, defineEmits, Ref , ref} from 'vue';
 
-export default defineComponent({
-    name: 'PostDetail',
-    props: {
-        title: {
-            type: String,
-            required: true
-        },
-        content: {
-            type: String,
-            required: true,
-            default: 'Sin Contenido'
-        }
-    },
-    emits: ['sayHi'],
-    setup(props, { emit }) {
-        const handleClick = () =>{
-            emit('sayHi', message.value);
-        }
-        let message: Ref<string> = ref("");
-        return { props, message, handleClick};
-    }
+const props = defineProps({
+    title: String,
+    content: String
 });
+
+const emit = defineEmits<{
+    (event: 'sayHi', message: string): void;
+}>();
+
+let message: Ref<string> = ref('');
+
+const handleClick = () =>{
+    emit('sayHi', message.value);
+}
+
 
 </script>
 
