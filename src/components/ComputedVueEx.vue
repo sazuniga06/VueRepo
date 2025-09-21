@@ -2,7 +2,7 @@
 <div>
     <input type="text" v-model="message" >
     <p> {{ message }}</p>
-    <p> {{ reverse}}</p>
+    <p v-font-size="50" v-color:red v-background.yellow.left="'red, blue'">{{ reverse}}</p>
 </div>
 </template>
 
